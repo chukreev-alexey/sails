@@ -3,7 +3,7 @@ import datetime
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 
-from supercaptcha import CaptchaField
+#from supercaptcha import CaptchaField
 from autocomplete.utils import autocomplete_formfield
 from autocomplete.widgets import AutocompleteWidget
 
@@ -91,4 +91,3 @@ class NewPaymentForm(forms.Form):
 class PaymentCommentForm(forms.Form):
     payment = forms.IntegerField(label=u'ИД платежа')
     comment = forms.CharField(label=u'Комментарий к оплате', required=False)
-    

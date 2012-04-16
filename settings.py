@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import os, sys
 
-MY_DJANGO_ROOT = os.sep.join(os.path.dirname(os.path.realpath(__file__)).split(os.sep)[:-2])
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(MY_DJANGO_ROOT)
-sys.path.append(MY_DJANGO_ROOT+'/apps')
+MY_DJANGO_ROOT = PROJECT_DIR
 sys.path.append(PROJECT_DIR)
 
 from common.settings import *
@@ -13,7 +11,7 @@ ADMINS = (
     ('Alexey', 'chukreev.alexey@gmail.com'),
 )
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 PROJECT_NAME = 'sails'
