@@ -1,0 +1,72 @@
+{% extends "common.html" %}
+
+{% block extra_js %}
+	{{ form.media }}
+{% endblock %}
+
+{% block content %}
+	<span class="MainTitle">
+		Сводный отчет
+		{% if form.cleaned_data.dt1 and form.cleaned_data.dt2 %}
+		<span>{{ form.cleaned_data.dt1|date:"d.m.y" }} - {{ form.cleaned_data.dt2|date:"d.m.y" }}</span>
+        {% else %}
+        <span>{% now "d.m.y" %} - {% now "d.m.y" %}</span>
+		{% endif %}
+	</span>
+	<div class="ContentColumn">
+    {% if object_list %}
+		<div class="GridHeader">
+			<div class="RequestID">Заявка, дата заявки</div>
+			<div class="TouristName">Турист</div>
+			<div class="Destination">Страна, дата заезда</div>
+			<div class="TourOperator">Оператор</div>
+			<div class="PriceCurrency">Сумма по договору в валюте</div>
+
+			<div class="PaymentDate">Дата оплаты</div>
+			<div class="PaidRubles">Сумма оплаты в рублях</div>
+			<div class="CurrencyRate">Курс оплаты</div>
+			<div class="ManagerReceiver">Менеджер, принявший деньги</div>
+			<div class="ManagerChecker">Статус</div>
+		</div>
+		{% for item in object_list %}
+		<div class="GridRow">
+			<div class="RequestID">№{{ item.order.id }} от<br /><span style="font-size: 9px;">{{ item.order.dt_mod|date:"d.m.Y H:i" }}</span></div>
+			<div class="TouristName">{{ item.order.tourist }}</div>
+			<div class="Destination">{{ item.order.country }} {{ item.order.dt_in|date:"d.m.Y" }}</div>
+			<div class="TourOperator">{{ item.order.oper }}</div>
+			<div class="PriceCurrency">{{ item.order.order_value|floatformat:2 }} {{ item.order.currency.code|safe }}</div>
+			<div class="PaymentDate"><span style="font-size: 9px;">{{ item.dt_mod|date:"d.m.Y H:i" }}</span></div>
+			<div class="PaidRubles">{{ item.pay|floatformat:2 }}<br />{{ item.payment_type|default:"" }}</div>
+			<div class="CurrencyRate">{{ item.rate|floatformat:4 }}</div>
+			<div class="ManagerReceiver">{{ item.staff }}</div>
+			<div class="ManagerChecker">
+				{% include "boxes/payment_status_box.html" %}
+			</div>
+		</div>
+		{% endfor %}
+        {% if object_list.total_row %}
+        <div class="GridTotalRow">
+			<div class="RequestID">Итого:</div>
+			<div class="TouristName"></div>
+			<div class="Destination"></div>
+			<div class="TourOperator"></div>
+			<div class="PriceCurrency"></div>
+			<div class="PaymentDate"></div>
+			<div class="PaidRubles">{{ object_list.total_row.pay|floatformat:2 }}</div>
+			<div class="CurrencyRate"></div>
+			<div class="ManagerReceiver"></div>
+			<div class="ManagerChecker"></div>
+		</div>
+        {% endif%}
+    {% else %}
+        <p>По вашему запросу данных не найдено</p>
+    {% endif %}
+	</div>
+	<div class="MenuColumn">
+		<form action="" method="post">
+			{% csrf_token %}
+			<ul>{{ form.as_eul }}</ul>
+			<input class="SearchButton" type="submit" value="Сформировать отчет" />
+		</form>
+	</div>
+{% endblock %}

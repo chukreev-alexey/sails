@@ -1,0 +1,557 @@
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,a,img
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+html
+{
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+body
+{
+	width: 100%;
+	height: auto !important;
+	height: 100%;
+	min-height: 100%;
+	background: #fff;
+	font-size: 100.01%;
+	font-family: Arial;
+	position: relative;
+	background: #fff;
+	vertical-align: baseline;
+	color: #333;
+}
+button,
+html input[type="button"], 
+input[type="reset"], 
+input[type="submit"]
+{
+    cursor: pointer;
+}
+input[type="button"]
+{
+	width: auto;
+	overflow: visible;
+}
+button, input, select, textarea
+{
+	margin: 0;
+}
+textarea
+{ 
+	overflow: auto;
+}
+sub, sup
+{
+	font-size: 60%;
+	line-height: 0;
+	position: relative;
+}
+sup
+{
+	top: -0.3em;
+}
+sub
+{
+	bottom: -0.25em;
+}
+ins
+{
+	text-decoration: none;
+}
+table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a
+{
+	color: #055F9F;
+}
+a:hover
+{
+	color: #FF9F80 !important;
+}
+::selection,
+::moz-selection,
+::-webkit-selection {
+	background: #008E98;
+	color: white;
+	text-shadow: none;
+}
+.MaxWidth
+{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.MinWidth
+{
+	min-width: 985px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.LeftMargin, .RightMargin { display: none; }
+
+/*---------------------------------- ClearFix -------------------------------*/
+.clearfix:before, .clearfix:after
+{
+	content: "\0020";
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+.clearfix:after
+{
+	clear: both;
+}
+
+.GridRow:after,
+.Form:after,
+/*.FormLeftColumn input,*/
+.FormField:after,
+.FormLabel:after,
+.ContentColumn:after
+{
+	display: block;
+	clear: both;
+	content: "";
+}
+
+/*----------------------------------- Header --------------------------------*/
+.Header
+{
+	background: #008E98;
+	overflow: hidden;
+	width: 100%;
+}
+.Header a,
+.Header span
+{
+	color: white;
+	text-shadow: 0 1px black;
+}
+.Header a:active
+{
+	text-shadow: none;
+}
+.Logo
+{
+	float: left;
+}
+.LoginInfo
+{
+	overflow: hidden;
+}
+.WelcomeMsg,
+.LogOutLink
+{
+	margin: 1em 2em 0 0;
+	font-size: 0.75em;
+}
+.WelcomeMsg
+{
+	float: right;
+}
+.LogOutLink
+{
+	float: right;
+}
+.Header ul
+{
+	margin: 3em 0 0 2em;
+	float: left;
+	display: block;
+	font-family: Georgia, Arial;
+}
+.Header li
+{
+	display: inline;
+	float: left;
+	margin: 0 2em 0 32px;
+	position: relative;
+}
+.Header .Active
+{
+	font-weight: bold;
+}
+.NewRequest span,
+.Requests span,
+.OverallReport span
+{
+	height: 32px;
+	width: 32px;
+	position: absolute;
+	top: -8px;
+	left: -36px;
+}
+.NewRequest,
+.Requests,
+.OverallReport
+{
+	display: block;
+}
+.NewRequest span,
+.Requests span,
+.OverallReport span
+{
+	width: 32px;
+	height: 32px;
+}
+.NewRequest span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 -246px;
+}
+.NewRequest:hover span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 -164px;
+}
+.Requests span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 -410px;
+}
+.Requests:hover span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 -328px;
+}
+.OverallReport span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 -82px;
+}
+.OverallReport:hover span
+{
+	background: url('../Images/Sprite.png') no-repeat top left;
+	background-position: 0 0;
+}
+
+/*----------------------------------- Content -------------------------------*/
+.LoginPanel
+{
+	font-family: Georgia, Arial;
+}
+.Wrapper
+{
+	width: auto;
+	display: block;
+	padding: 0.6em 1em 3em 1em;
+	overflow: hidden;
+}
+.Wrapper .messages
+{
+	font-family: Georgia, Arial;
+	font-style: italic;
+	list-style: none;
+	width: 50%;
+	margin: 0 auto;
+	font-size: 0.9em;
+}
+.Wrapper .messages li
+{
+	padding: 1em;
+}
+.Wrapper .error
+{
+	color: red;
+	border-top: 1px solid red;
+	border-bottom: 1px solid red;
+	margin: 1em 0;
+}
+.Wrapper .success
+{
+	color: #008E98;
+	border-top: 1px solid #008E98;
+	border-bottom: 1px solid #008E98;
+	margin: 1em 0;
+}
+.MainTitle
+{
+	font-weight: bold;
+	display: block;
+	padding: 0.5em 0;
+	font-family: Georgia, Arial;
+	font-style: italic;
+	font-size: 1.2em;
+}
+.ContentColumn
+{
+	float: left;
+	width: 80%;
+}
+
+.PaymentBlock
+{
+	background: #008E98;
+	margin: 0 -1em;
+	padding: 1em;
+	color: white;
+}
+.AddRequestButton
+{
+	margin: 1em 0 0 0;
+	padding: 0.8em 2em;
+}
+.AddNewPayment
+{
+	width: 33%;
+	margin-left: 17%;
+	clear: both;
+	float: left;
+}
+.AddPaymentButton
+{
+	padding-top: 9px;
+	padding-bottom: 9px;
+	width: 100%;
+	/*display: block;*/
+}
+.SearchButton
+{
+	width: 100% !important;
+	padding: 10px 0;
+	margin-top: 1em;
+}
+.AddRequestButton,
+.AddPaymentButton,
+.SearchButton
+{
+	font-family: Georgia;
+	font-style: italic;
+}
+.OrderInfo
+{
+	padding: 1em 0 0 0;
+	font-size: 0.75em;
+	text-align: left;
+	width: 35%;
+	line-height: 1.5em;
+	float: right;
+}
+.OrderInfo div
+{
+	width: 100%;
+	overflow: hidden;
+}
+.OrderInfo p
+{
+	float: left;
+}
+.OrderInfo span
+{
+	float: right;
+}
+.DebtValue
+{
+	border-top: 1px solid silver;
+}
+.DebtValue span
+{
+	font-weight: bold;
+}
+.GridRow div,
+.GridTotalRow div,
+.GridHeader div
+{
+	float: left;
+	padding: 3px 5px;
+}
+.GridHeader
+{
+	margin: 1em 0 0 0;
+	overflow: hidden;
+	clear: both;
+	color: white;
+	font-weight: bold;
+	font-size: 0.75em;
+	background: #008E98;
+	text-shadow: 0 1px black;
+}
+.GridRow,
+.GridTotalRow
+{
+	padding: 5px 0;
+	display: block;
+	overflow: hidden;
+	font-size: 0.75em;
+}
+.GridRow
+{
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+.GridRow:hover
+{
+	background: #eee !important;
+}
+.GridTotalRow
+{
+	font-weight: bold;
+}
+.RequestID
+{
+	width: 8%;
+}
+.TouristName
+{
+	width: 14%;
+}
+.Destination
+{
+	width: 10%;
+}
+.TourOperator
+{
+	width: 9%;
+}
+.PriceCurrency
+{
+	width: 8%;
+}
+.PaidCurrency
+{
+	width: 8%;
+}
+.DebtCurrency
+{
+	width: 11%;
+}
+.PaymentDate
+{
+	width: 7%;
+}
+.PaidRubles
+{
+	width: 7%;
+}
+.CurrencyRate
+{
+	width: 6%;
+}
+.ManagerReceiver
+{
+	width: 10%;
+}
+.ManagerChecker
+{
+	width: 8%;
+}
+.Manager {
+	width: 21%;
+}
+.Comments
+{
+	width: 10%;
+}
+.Status
+{
+	width: 10%;
+}
+.MenuColumn
+{
+	float: right;
+	width: 18%;
+	margin: 1em 0 0 0;
+	font-size: 0.75em;
+	position: relative;
+}
+.MenuColumn ul
+{
+	list-style: none;
+	line-height: 2;
+}
+.MenuColumn input
+{
+	width: 98.5%;
+}
+.Title,
+.PopupTitle
+{
+	display: block;
+	padding: 0 0 0.5em 0;
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.PopupTitle
+{
+	padding: 0;
+}
+.SubTitle
+{
+	font-size: 1em;
+	padding: 1em 0 0 0;
+	display: block;
+	font-style: italic;
+}
+.ClearFilter
+{
+	padding: 0.5em 0 0 0;
+	float: right;
+}
+
+.vCalendarField 
+{
+	width: 98.5%;
+	/*//width: 86% !important;*/
+}
+.ui-menu-item
+{
+	cursor: pointer;
+}
+.ui-datepicker-trigger
+{
+	//padding-left: 4px;
+	float: right;
+	margin-top: -20px;
+	margin-right: 3px;
+	position: relative;
+}
+
+/*------------------------------------ Footer --------------------------------*/
+.Footer
+{
+	height: 270px;
+	padding: 0.6em 2em 2.5em 3em;
+	overflow: hidden;
+	position: relative;
+	display: block;
+}
+
+.PageNumber a.Active 
+{
+    font-weight: bold;
+}
+
+/*------------------------------------ Print Styles --------------------------------*/
+/* Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css */
+@media print {
+	a, a:visited { color: #444 !important; text-decoration: underline; }
+	/*a[href]:after { content: attr(href); }*/
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+	thead { display: table-header-group; }
+	img { page-break-inside: avoid; }
+	input{ border: 1px solid silver; }
+	.MenuColumn, .Header ul, .LoginInfo { display: none !important; }
+	.ContentColumn { width: 100%; }
+	* { color: black !important; text-shadow: none !important;}
+}
+
+/* Editable Comments */
+a.editComment
+{
+    font-size: 9px;
+}
+div.EditableComment {
+    display: none;
+}
+    div.EditableComment textarea {
+        width: 100%;
+        font-size: 11px;
+    }
+    

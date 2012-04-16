@@ -1,0 +1,76 @@
+{% extends "common.html" %}
+{% load common_tags %}
+
+{% block extra_js %}
+	{{ form.media }}
+	<script type="text/javascript" src="/media/js/popupwindow.js"></script>
+{% endblock %}
+
+{% block popup %}
+	<div id="HideBlock" class="HideBlock" style="display: none;">&nbsp;</div>
+	<div class="PopupWindow" id="PopupWindow" style="display: none;">
+		<div class="PopupWindowInner">
+			<div class="PopupWindowTR">
+				<div class="Popup">
+					<div class="d-shadow">
+						<div class="d-shadow-wrap">
+							<a href="#" class="PopupWindowClose" id="ClosePopup">Закрыть</a>
+							<div class="d-sh-cn d-sh-tl">&nbsp;</div>
+							<div class="d-sh-cn d-sh-tr">&nbsp;</div>
+							<div class="PopupContent" id="PopupContent"></div>
+						</div>
+						<div class="d-sh-cn d-sh-bl">&nbsp;</div>
+						<div class="d-sh-cn d-sh-br">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<span class="MainTitle">Реестр заявок</span>
+	<div class="ContentColumn">
+		<div class="GridHeader">
+			<div class="RequestID">Заявка, дата заявки</div>
+			<div class="TouristName">Турист</div>
+			<div class="Destination">Страна, дата заезда</div>
+			<div class="TourOperator">Оператор</div>
+			<div class="PriceCurrency">Сумма по договору в валюте</div>
+			<div class="PaidCurrency">Оплачено в валюте</div>
+			<div class="DebtCurrency">Долг в валюте</div>
+			<div class="Manager">Менеджер</div>
+		</div>
+		{% for item in object_list.object_list %}
+		<div class="GridRow">
+			<div class="RequestID">№{{ item.id }} от<br /><span style="font-size: 9px;">{{ item.dt_mod|date:"d.m.y H:i" }}</span></div>
+			<div class="TouristName">{{ item.tourist }}</div>
+			<div class="Destination">{{ item.country }}<br />{{ item.dt_in|date:"d.m.y" }}</div>
+			<div class="TourOperator">{{ item.oper }}</div>
+			<div class="PriceCurrency">{{ item.order_value|floatformat:2 }}&nbsp;{{ item.currency.code|safe }}</div>
+			<div class="PaidCurrency"><a href="{% url order_info pk=item.id %}" class="AddPayment">{{ item.get_payments_sum|floatformat:4}}&nbsp;{{ item.currency.code|safe }}</a></div>
+			<div class="DebtCurrency">{{ item.get_debt|floatformat:4}} {{ item.currency.code|safe }}</div>
+			<div class="Manager">{{ item.staff }}</div>
+		</div>
+		{% endfor %}
+        {% paginator object_list request %}
+    </div>
+	
+	<div class="MenuColumn">
+		<span class="Title">Поиск заявок</span>
+		<form action="" method="get">
+			<ul>
+                {% for field in form %}
+                    <li {% if field.name == "forders" %}class="Checkbox"{% endif %} >
+                        <div class="FormLabel">{{ field.label_tag }}</div>
+                        <div class="FormField">{{ field }}</div>
+                        <div class="FormError">{{ field.errors }}</div>
+                        <div class="FormHelpText">{{ field.help_text }}</div>
+                    </li>
+                {% endfor %}
+            </ul>
+			<input class="SearchButton" type="submit" value="Найти" />
+			<a href="{% url order_list %}" class="ClearFilter">Очистить фильтр</a>
+		</form>
+	</div>
+{% endblock %}

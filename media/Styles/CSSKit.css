@@ -1,0 +1,468 @@
+.FormList p
+{
+	font-size: 0.9em;
+	font-style: italic;
+	color: #222;
+	line-height: 1.4em;
+	padding: 0 0 1em 0;
+}
+.FormList ul
+{
+	list-style-type: none;
+}
+.FormList ul li:after
+{
+	display: block;
+	clear: both;
+	content: ""
+}
+.FormList ul li
+{
+	width: 100%;
+	position: relative;
+	padding: 0 0 1em 0;
+}
+.FormList .FormLabel
+{
+	/*width: 27%;
+	float: left;
+	padding: 0.2em 1em 0 0;*/
+	font-size: 0.8em;
+}
+.FormLabel span
+{
+	color: red;
+	line-height: 0;
+	font-size: 20px !important;
+}
+.FormList .FormField
+{
+	/*width: 68%;
+	float: left;*/
+	font-size: 0.8em;
+	position: relative;
+}
+
+.FormList .FormField input,
+.FormList .FormField textarea
+{
+	width: 98.5%;
+	/*overflow: auto;*/
+}
+.FormField select
+{
+	width: 99.5%;
+}
+.FormError
+{
+	color: red;
+}
+.FormList .FormError
+{
+	width: 100%;
+	text-align: left;
+	color: red;
+	line-height: 1;
+	font-weight: normal;
+	font-size: 0.8em;
+}
+.FormList .FormError span
+{
+	display: inline-block;
+	font-size: 0.8em;
+	color: Red;
+	/*padding: 0.3em 0 0 29%;*/
+	//font-size: 14px;
+}
+.FormList .FormField textarea
+{
+	font-family: Arial;
+	height: 5em;
+}
+.FormList .FormTwoColumn
+{
+	width: 200%;
+}
+.FormDoubleWidth
+{
+	padding: 1em 0 0 0;
+	width: 221%;
+	overflow: hidden;
+}
+.Form
+{
+	overflow: hidden;
+	clear: both;
+}
+.FormLeftColumn
+{
+	width: 230px;
+	float: left;
+	line-height: 1.7em;
+	padding-right: 1em;
+}
+.FormBlock
+{
+	width: 45%;
+	margin: 0 5% 0 0;
+	line-height: 1.7em;
+	float: left;
+}
+.FormSend 
+{
+	width: 95%;
+	display: block;
+	text-align: center;
+}
+.FormSend a
+{
+	width: 194px;
+	height: 55px;
+	display: inline-block;
+	background: url(../Images/Sprite.png) 0 -249px;
+	text-decoration: none;
+	margin: 0.5em 0 1em 0;
+}
+.OptionalLabel
+{
+	color: #666;
+}
+
+.LoginPanel
+{
+	font-family: Georgia, Arial;
+}
+.LoginPanel .FormLabel
+{
+	width: 100%;
+	float: none;
+	padding: 0.2em 1em 0 0;
+	font-size: 1em;
+	font-style: normal;
+}
+.LoginPanel .Checkbox
+{
+	width: 50% !important;
+	margin: 0 auto;
+}
+.LoginPanel .Checkbox .FormLabel
+{
+	margin-top: -2px !important;
+	width: 86%;
+}
+
+.LoginPanel .FormField
+{
+	width: 100%;
+	float: none;
+}
+.LoginPanel .FormError
+{
+	font-style: italic;
+	font-size: 0.8em;
+}
+.LoginPanel li
+{
+	padding: 0 !important;
+}
+.LoginButton
+{
+	width: 50%;
+	padding: 0.3em 0;
+	margin: 0.5em 0 0 0;
+	font-family: Georgia, Arial;
+	font-style: italic;
+	font-size: 1.3em;
+}
+.HideBlock
+{
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	min-width: 985px;
+	background: url(../Images/TransparentBg.png);
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+}
+.Checkbox 
+{
+	overflow: hidden;
+	padding-top: 1em;
+}
+.Checkbox .FormField
+{
+	width: 15px;
+	float: left;
+	line-height: 1em;
+}
+.Checkbox .FormLabel
+{
+	width: 91%;
+	float: right;
+	line-height: 1;
+	/*margin-top: 3px;*/
+	padding: 0;
+	text-align: left;
+}
+.Popup
+{
+	width: 680px;
+	margin: 0 auto;
+	position: relative;
+}
+.Popup ul
+{
+	list-style: none;
+	line-height: 2;
+}
+.Popup .PaymentDate
+{
+	width: 15%;
+}
+.Popup .PaidRubles
+{
+	width: 16%;
+	text-align: center;
+}
+.Popup .CurrencyRate
+{
+	width: 13%;
+	text-align: center;
+}
+.Popup .Comments
+{
+	width: 32%;
+}
+.Popup .Status
+{
+	width: 15%;
+	text-align: center;
+}
+.Popup  .messages
+{
+	float: left;
+	color: green;
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+	margin-top: 0.3em;
+	margin-left: 1em;
+}
+.Popup  .messages li
+{
+	padding: 0;
+}
+.Popup .error
+{
+	color: red;
+}
+
+.PopupWindow
+{
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	position: fixed;
+	display: table;
+	z-index: 2000;
+	left: 0;
+	top: 0;
+}
+.PopupWindow h1
+{
+	font-size: 1.8em;
+	font-style: italic;
+	font-weight: normal;
+	font-family: Georgia;
+	color: #D27D2C;
+	padding: 0 0 0.6em 0;
+}
+.PopupWindow h2
+{
+	font-size: 1.2em;
+	font-style: italic;
+	font-weight: normal;
+	font-family: Georgia;
+	color: #D27D2C;
+	position: relative;
+	margin: -0.4em 0 0 0;
+	padding: 0 0 0.6em 0;
+}
+.PopupWindow h3
+{
+	font-size: 1.8em;
+	font-style: italic;
+	font-weight: normal;
+	font-family: Georgia;
+	color: #993914;
+	padding: 0 0 0.6em 0;
+}
+.PopupWindowInner
+{
+	width: 100%;
+	position: relative;
+	display: table-cell;
+	vertical-align: middle;
+	//top: 50%;
+	//vertical-align: baseline;
+}
+.PopupWindowInner .PopupWindowTR
+{
+	width: 100%;
+	position: relative;
+	//top: -50%;
+	padding: 0 0 28px 0;
+}
+.PopupWindowClose
+{
+	display: block;
+	position: absolute;
+	top: 18px;
+	right: 4%;
+	font-size: 0.8em;
+	font-style: italic;
+	border-bottom: dashed 1px red;
+	color: red;
+	cursor: pointer;
+	z-index: 1000;
+	text-decoration: none;
+}
+.PopupWindowClose:hover
+{
+	border-bottom: dashed 1px #ec860a !important;
+	color: #ec860a !important;
+}
+.PopupWindowWidth
+{
+	width:280px;
+	margin: 0 auto;
+	position: relative;
+	background: #008E98;
+	text-align: center;
+	padding: 0 1em 1em 1em;
+	color: white;
+}
+.PopupWindowWidth input[type="text"],
+.PopupWindowWidth input[type="password"]
+{
+	display: block;
+	width: 100%;
+	margin: 0 0 1em 0;
+	text-align: center;
+}
+.PopupWindowWidth input[type="button"]
+{
+	padding: 5px 3em;
+}
+.PopupContent
+{
+	overflow: hidden;
+	padding: 1.5em 0 0 0;
+}
+.FormPayments
+{
+	max-height: 300px;
+	overflow: hidden;
+	padding: 3px 0 0 0;
+	position: relative;
+}
+.FormPayments .FormList
+{
+	padding: 0.5em 0 0 0;
+}
+.FormPayments .FormError span
+{
+	font-size: 1em !important;
+	color: red;
+	padding: 0;
+}
+.FormPayments .PaymentTotal
+{
+	width: 17%;
+	margin-left: 17%;
+	float: left;
+}
+.FormPayments .PaymentRate
+{
+	width: 15%;
+	margin-left: 1%;
+	float: left;
+}
+.FormPayments .PaymentComment
+{
+	width: 33%;
+	margin-left: 17%;
+	float: left;
+	clear: left;
+}
+.PaymentComment textarea
+{
+	max-width: 500px;
+	max-height: 150px;
+}
+
+.PaymentType {
+    width: 33%;
+    margin-left: 17%;
+    float: left;
+    clear: left;
+}
+
+
+.d-shadow
+{
+	position: relative;
+	margin: 0 24px;
+	padding: 0 0 24px 0;
+}
+.d-shadow-wrap
+{
+	width: 100%;
+	position: relative;
+	padding: 0 24px;
+	margin: 0 -24px;
+	overflow: hidden;
+}
+.d-sh-cn
+{
+	position: absolute;
+	left: -24px;
+	z-index: -1;
+	background: url(../Images/BackGrounds/Popup.png);
+}
+.d-sh-tl,
+.d-sh-tr
+{
+	height: 1500px;
+	top: -24px;
+}
+.d-sh-tl,
+.d-sh-bl
+{
+	width:100%;
+}
+.d-sh-tr,
+.d-sh-br
+{
+	width: 24px;
+	margin-left: 100%;
+}
+.d-sh-bl,
+.d-sh-br
+{
+	height: 24px;
+}
+
+.d-sh-bl
+{
+	left: -48px;
+	padding-right: 48px;
+	clip: rect(auto auto auto 24px);
+}
+.d-sh-br
+{
+	left: 0px;
+	//left: -48px;
+}
+a:active, a:focus, input { outline: none; }

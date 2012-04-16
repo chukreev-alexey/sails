@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+	<link href="/media/Styles/CSSKit.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block body %}
+	<div class="PopupWindow LoginPanel">
+		<div class="PopupWindowInner">
+			<div class="PopupWindowTR">
+				<div class="PopupWindowWidth">
+						<div class="FormList">
+							<form method="post" action="{% url login %}">
+								{% csrf_token %}
+								<a href="/"><img src="/media/Images/Logo.png" alt="" title=""/></a><br />
+								<ul>
+                                {{ form.non_field_errors }}
+                                {% if messages %}
+                                    <li>
+                                        <ul class="errorlist">
+                                            {% for message in messages %}
+                                            <li>{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                                {% for field in form %}
+                                    <li {% if field.name == "remember" %}class="Checkbox"{% endif %} >
+                                        <div class="FormLabel">{{ field.label_tag }}</div>
+                                        <div class="FormField">{{ field }}</div>
+                                        <div class="FormError">{{ field.errors }}</div>
+                                        <div class="FormHelpText">{{ field.help_text }}</div>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+								<input type="submit"  class="LoginButton" value="Войти" />
+							</form>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

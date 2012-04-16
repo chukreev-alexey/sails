@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+	{% block popup %}{% endblock %}
+	<div class="LeftMargin">&nbsp;</div>
+	<div class="RightMargin">&nbsp;</div>
+	<div class="MaxWidth">
+		<div class="MinWidth">
+			<div class="Header">
+				<a href="/" class="Logo"><img src="/media/Images/Logo.png" alt="" title="" width="280" height="105"/></a>
+				<div class="LoginInfo">
+					{% if request.account %}
+					<a href="{% url logout %}" class="LogOutLink">Выйти</a>
+					<span class="WelcomeMsg clearfix">Здравствуйте, <b>{{ request.account.name }}</b></span>
+					{% endif %}
+				</div>
+				<ul>
+					<li><a href="{% url new_order %}" class="NewRequest{% if request.path == '/new/order/' %} Active{% endif %}"><span></span>Новая заявка</a></li>
+					<li><a href="{% url order_list %}" class="Requests{% if request.path == '/orders/' or request.path == '/' %} Active{% endif %}"><span></span>Реестр заявок</a></li>
+					{% if request.is_auth_direction %}
+                    <li><a href="{% url report_payments %}" class="OverallReport{% if request.path == '/report/payments/' %} Active{% endif %}"><span></span>Сводный отчет</a></li>
+                    {% endif %}
+                </ul>
+			</div>
+
+			<div class="Wrapper">
+				{% block content %}{% endblock %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

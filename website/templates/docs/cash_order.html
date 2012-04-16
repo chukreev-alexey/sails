@@ -1,0 +1,153 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Приходный кассовый ордер</title>
+<style type="text/css">
+.style3 {font-family: "Arial Cyr"; font-size: 10px; }
+.style4 {font-family: "Arial Cyr"; font-size: 12px; }
+</style>
+
+</head>
+<body>
+<table width="650" border="0" cellspacing="0" cellpadding="0">
+<tbody><tr>
+<td width="448" height="231" valign="top">  <font color="#000000" face="Arial Cyr" style="FONT-SIZE:8pt">
+  <div align="right">
+  <b>Унифицированная форма № КО-1</b><br><br>
+  Утверждена постановлением Госкомстата<br>России от 18.08.98г. № 88
+  </div></font>
+  <br>
+  <table border="1" cellspacing="0" cellpadding="0" bordercolorlight="#FFFFFF">
+    <tbody><tr bordercolor="#FFFFFF" class="style3">
+      <td width="251">&nbsp;</td>
+      <td width="110"><div align="right"></div></td>
+      <td width="79" bordercolor="#000000"><div align="center">Коды</div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" class="style3">
+      <td>&nbsp;</td>
+      <td><div align="right">форма по ОКУД&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+      <td bordercolor="#000000"><div align="center">0310001</div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" class="style3">
+      <td><u><b><font color="#000000" face="Arial Cyr" style="FONT-SIZE:10pt">{{ request.settings.firm }}
+      </font></b></u></td>    
+      <td><div align="right">по ОКПО&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></td>
+      <td bordercolor="#000000"><div align="center">62560608</div></td>
+    </tr>
+    <tr bordercolor="#FFFFFF" class="style3">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td bordercolor="#000000">&nbsp;</td>
+    </tr>
+  </tbody></table>
+  <br>
+<table border="0" cellspacing="0" cellpadding="0">
+  <tbody><tr>
+    <td width="317" height="42" valign="bottom"><div align="center"><b><font color="#000000" face="Arial Cyr" style="FONT-SIZE:10pt">ПРИХОДНЫЙ КАССОВЫЙ ОРДЕР</font></b></div></td>
+    <td width="131" align="right">
+     <table border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+      <tbody><tr bordercolor="#000000" class="style3">
+        <td width="50"><div align="center">Номер документа </div></td>
+        <td width="50"><div align="center"> Дата составления</div></td>
+      </tr>
+      <tr bordercolor="#000000" class="style3">
+        <td height="21" align="center">{% if payment.n_pay %}{{ payment.n_pay }}{% endif %}</td>
+        <td align="center">{{ payment.dt_mod|date:"d.m.Y" }}</td>
+      </tr>
+    </tbody></table></td>
+    </tr>
+</tbody></table>
+<br>
+<table width="448" border="1" bordercolor="#000000" cellspacing="0" cellpadding="0">
+  <tbody><tr align="center" valign="top">
+    <td width="49" rowspan="2" class="style1"><span class="style3">Дебет</span></td>
+    <td width="13" rowspan="2" class="style1 style10">&nbsp;</td>
+    <td colspan="3" class="style1"><div align="center"><span class="style3">Кредит</span></div></td>
+    <td width="83" rowspan="2" class="style1"><div align="center"><span class="style3">Сумма,<br> руб. коп </span></div></td>
+    <td width="59" rowspan="2" class="style1"><span class="style3">Код целевого назначения </span></td>
+    <td width="21" rowspan="2">&nbsp;</td>
+  </tr>
+  <tr align="center" valign="top">    
+    <td width="66" class="style1"><div align="center" class="style3">код структурного подразделения</div></td>
+    <td width="69" class="style1"><div align="center" class="style3">корреспондирующий счет, субсчет</div></td>
+    <td width="70" class="style1"><div align="center" class="style3">код аналитического учета</div></td>
+  </tr>
+  <tr align="center" valign="top" class="style4">
+    <td>50.1</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>62.4</td>
+    <td>&nbsp;</td>
+    <td>{{ payment.pay|floatformat:2 }}</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</tbody></table>
+<br><font color="#000000" face="Arial Cyr" style="FONT-SIZE:10pt">Принято от {{ payment.order.tourist }}<br><br>
+  Основание: Заявка № {{ payment.order.id }} c {{ payment.order.dt_in|date:"d.m.Y" }}<br>
+  Сумма: {{ payment.get_rubles }} <br>
+  В том числе без налога (НДС).<br>
+  Приложение: {{ payment.payment_type }}<br><br>
+  <b>Главный бухгалтер &nbsp;&nbsp;
+  <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ request.settings.head_booker }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></b>
+  <br>
+  <font color="#000000" face="Arial Cyr" style="FONT-SIZE:8pt">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  подпись
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  расшифровка подписи
+  </font>
+  <br>
+  <b>Получил кассир &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <u>{{ payment.staff.name }}</u></b><br>
+    <font color="#000000" face="Arial Cyr" style="FONT-SIZE:8pt">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  подпись
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  расшифровка подписи
+  </font>
+</font>
+</td>
+<td width="10" style="border-left: solid 1px black; border-right: solid 1px black;">&nbsp;
+</td>
+<td width="290" valign="top">  <div align="center"><font color="#000000" face="Arial Cyr" style="FONT-SIZE:10pt"><b><u>{{ request.settings.firm }}</u><br><br> 
+      КВИТАНЦИЯ</b><br> 
+      к приходному кассовому ордеру № {% if payment.n_pay %}{{ payment.n_pay }}{% endif %} от {{ payment.dt_mod|date:"d.m.Y" }}</font></div>
+  <font color="#000000" face="Arial Cyr" style="FONT-SIZE:10pt"><br>
+  Принято от {{ payment.order.tourist }}<br>
+  Основание: Заявка № {{ payment.order.id }} c {{ payment.order.dt_in|date:"d.m.Y" }}<br>
+  Сумма: {{ payment.pay|floatformat:2 }}<br>{{ payment.get_rubles }}<br>
+  В том числе без налога (НДС).<br></font>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <font color="#000000" face="Arial Cyr" style="FONT-SIZE:11pt">
+  <b><div align="center"><!--?php echo  $str_plata;?--></div><br>М.П.(штампа)<br><br></b></font>
+  <font color="#000000" face="Arial Cyr" style="FONT-SIZE:8pt">
+  <u><b>Главный бухгалтер&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b><br><br>
+  {{ request.settings.head_booker }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><br>расшифровка подписи<br>
+  <br><u>{{ payment.staff.name }}</u><br>расшифровка подписи
+  </font></td>
+</tr>
+</tbody></table>
+
+</body></html>

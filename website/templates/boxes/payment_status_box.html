@@ -1,0 +1,5 @@
+{% if item.checked_by %}
+    Проверено: {{ item.checked_by }}
+{% else %}
+    <a class="ConfirmPay" pid="{{ item.id }}" href="#">Оплата проверена</a>
+{% endif %}

@@ -1,0 +1,73 @@
+.LeftMargin
+{
+	width: 50%;
+	float: left;
+	height: 10px;
+	display: block;
+	position: relative;
+	margin-right: -600px;
+	line-height: 0;
+}
+.RightMargin
+{
+	width: 50%;
+	float: right;
+	height: 10px;
+	display: block;
+	position: relative;
+	margin-left: -600px;
+	line-height: 0;
+}
+.MaxWidth
+{
+	overflow: hidden;
+	position: relative;
+	z-index: 100;
+	float: left;
+}
+.MinWidth
+{
+	width: expression(( document.documentElement.clientWidth || document.body.clientWidth) < 980 ? "980px" : "auto" );
+}
+.clearfix
+{
+	zoom: 1;
+}
+
+.d-sh-tl,
+.d-sh-tr
+{
+	padding-right: 48px;
+}
+.d-sh-bl,
+.d-sh-br
+{
+	left: -24px;
+}
+.d-sh-bl
+{
+	padding: 0 48px 0 0;
+}
+.d-sh-cn
+{
+	background-image: none;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://sails.itcase.ru/media/Images/BackGrounds/Popup.png', sizingMethod = 'crop' );
+}
+
+.HideBlock
+{
+	width: expression((document.documentElement.clientWidth || document.body.clientWidth) < 985? "985px": "100%");
+	height: expression(document.documentElement.clientHeight + 'px');
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=/media/Images/TransparentBg.png,sizingMethod=scale);
+	top: expression( ( topVar = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop )  + 'px' );
+	background-image: none;
+	position: absolute;
+	cursor: default;
+}
+.PopupWindow
+{
+	width: expression((document.documentElement.clientWidth || document.body.clientWidth) < 985? "985px" : "100%" );
+	height: expression(eval(document.documentElement.offsetHeight) + "px" );
+	top: expression(eval(document.documentElement.scrollTop) + "px" );
+	position: absolute;
+}

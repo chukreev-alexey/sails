@@ -1,0 +1,1 @@
+$(document).ready(function() {    $(".vCalendarField").datepicker({            showOn: 'both',            buttonImage: '/media/Images/calendar.gif',            buttonImageOnly: true    });});

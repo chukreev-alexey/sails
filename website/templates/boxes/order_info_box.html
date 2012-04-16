@@ -1,0 +1,66 @@
+<span class="PopupTitle">Платежи по заявке №{{ object_detail.id }} от {{ object_detail.dt_mod|date:"d.m.Y H:i" }}</span>
+{{ object_detail.tourist }}
+
+<div class="GridHeader">
+	<div class="PaymentDate">№ и дата оплаты</div>
+	<div class="PaidRubles">Сумма в рублях</div>
+	<div class="CurrencyRate">Курс валюты</div>
+	<div class="Status">Статус</div>
+	<div class="Comments">Комментарий</div>
+</div>
+{% for item in object_detail.payments.all reversed %}
+<div class="GridRow" item_id="{{ item.id }}">
+	<div class="PaymentDate">№ {{ item.n_pay }} от <br />{{ item.dt_mod|date:"d.m.y H:i" }}</div>
+	<div class="PaidRubles">{{ item.pay|floatformat:2 }}<br />{{ item.payment_type|default:'' }}</div>
+	<div class="CurrencyRate">{{ item.rate|floatformat:4 }}</div>
+	<div class="Status">
+		{% if item.checked_by %}Проверено: {{ item.checked_by }}
+		{% else %}Не проверено{% endif %}
+        <a href="{% url cash_order pk=item.id %}" target="_blank">Приходник</a>
+	</div>
+	<div class="Comments">
+        {% if request.is_auth_direction %}
+            <div class="NotEditableComment">
+                {{ item.comment|default:"" }}{% if item.comment %}<br />{% endif %}
+                <a class="EditComment" href="#">Редактировать</a>
+            </div>
+            <div class="EditableComment">
+                <textarea rows="4" name="comment">{{ item.comment|default:"" }}</textarea>
+                <input class="ButtonCancelCommentChange" type="button" value="Отмена" />
+                <input class="ButtonSaveComment" type="button" value="Сохранить" />
+            </div>
+        {% else %}
+            {{ item.comment|default:"" }}
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+<form action="{% url order_info pk=object_detail.id %}" method="post" class="FormPayments">
+	{% csrf_token %}
+	<div class="OrderInfo">
+		<div><p>Сумма по договору:</p><span>{{ object_detail.order_value|floatformat:4 }} {{ object_detail.currency.code|safe }}</span></div>
+		<div><p>Оплачено в валюте:</p><span>{{ object_detail.get_payments_sum|floatformat:4 }} {{ object_detail.currency.code|safe }}</span></div>
+		<div class="DebtValue"><p>Долг в валюте:</p><span>{{ object_detail.get_debt|floatformat:4 }} {{ object_detail.currency.code|safe }}</span></div>
+	</div>
+	<ul class="FormList">
+		<li class="PaymentTotal"><div class="FormLabel"><label for="id_pay">Сумма платежа:<span>*</span></label></div> <div class="FormField"><input type="text" name="pay" id="id_pay"></div><div class="FormError"></div><div class="FormHelpText"></div></li>
+		<li class="PaymentRate"><div class="FormLabel"><label for="id_rate">Курс платежа:<span>*</span></label></div> <div class="FormField"><input type="text" name="rate" id="id_rate"></div><div class="FormError"></div><div class="FormHelpText"></div></li>
+        <li class="PaymentType">
+            <div class="FormLabel">{{ form.pay_type.label }}</div>
+            <div class="FormField">{{ form.pay_type }}</div>
+            <div class="FormError">{{ form.pay_type.errors }}</div>
+            <div class="FormHelpText">{{ form.pay_type.help_text }}</div>
+        </li>
+		<li class="PaymentComment"><div class="FormLabel"><label for="id_pay_comment">Комментарий к оплате:</label></div> <div class="FormField"><textarea id="id_pay_comment" rows="2" cols="20" name="pay_comment"></textarea></div><div class="FormError"></div><div class="FormHelpText"></div></li>
+		<li class="AddNewPayment">
+			<input type="submit" class="AddPaymentButton" value="Добавить платеж" />
+		</li>
+	</ul>
+    {% if messages %}
+		<ul class="messages">
+		{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+</form>

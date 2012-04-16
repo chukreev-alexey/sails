@@ -1,0 +1,86 @@
+{% extends "common.html" %}
+
+{% block extra_js %}
+	{{ form.media }}
+{% endblock %}
+
+{% block content %}
+	<span class="MainTitle">Заведение новой заявки</span>
+	<form method="post" action="">
+		{% csrf_token %}
+		<div class="Form">
+			<!--<ul>{ { form.as_eul } }</ul>-->
+			<div class="FormLeftColumn FormList">
+				<div class="FormLabel">{{ form.tourist.label }}<span>*</span></div>
+				<div class="FormField">{{ form.tourist }}</div>
+				<div class="FormError">{{ form.tourist.errors }}</div>
+				<div class="FormHelpText"></div>
+
+				<div class="FormLabel">{{ form.country.label }}<span>*</span></div>
+				<div class="FormField">{{ form.country }}</div>
+				<div class="FormError">{{ form.country.errors }}</div>
+				<div class="FormHelpText"></div>
+
+				<div class="FormLabel">{{ form.dt_in.label }}<span>*</span></div>
+				<div class="FormField">{{ form.dt_in }}</div>
+				<div class="FormError">{{ form.dt_in.errors }}</div>
+				<div class="FormHelpText"></div>
+
+				<div class="FormLabel">{{ form.oper.label }}<span>*</span></div>
+				<div class="FormField">{{ form.oper }}</div>
+				<div class="FormError">{{ form.oper.errors }}</div>
+				<div class="FormHelpText"></div>
+
+				<div class="FormDoubleWidth">
+					<div class="FormBlock">
+						<div class="FormLabel">{{ form.order_value.label }}<span>*</span></div>
+						<div class="FormField">{{ form.order_value }}</div> 
+						<div class="FormError">{{ form.order_value.errors }}</div>
+						<div class="FormHelpText"></div>
+
+						<div class="FormLabel">Валюта по договору<span>*</span></div>
+						<div class="FormField">{{ form.currency }}</div>
+						<div class="FormError">{{ form.currency.errors }}</div>
+						<div class="FormHelpText"></div>
+					</div>
+
+					<div class="FormBlock">
+						<div class="FormLabel OptionalLabel">{{ form.order_comment.label }}</div>
+						<div class="FormField">{{ form.order_comment }}</div>
+						<div class="FormError">{{ form.order_comment.errors }}</div>
+						<div class="FormHelpText"></div>
+					</div>
+				</div>
+
+				<div class="FormDoubleWidth">
+					<div class="FormBlock">
+						<div class="FormLabel">{{ form.pay.label }}<span>*</span></div>
+						<div class="FormField">{{ form.pay }}</div>
+						<div class="FormError">{{ form.pay.errors }}</div>
+						<div class="FormHelpText"></div>
+                        
+                        <div class="FormLabel">{{ form.pay_type.label }}<span>*</span></div>
+						<div class="FormField">{{ form.pay_type }}</div>
+						<div class="FormError">{{ form.pay_type.errors }}</div>
+						<div class="FormHelpText"></div>
+
+						<div class="FormLabel">{{ form.rate.label }}<span>*</span></div>
+						<div class="FormField">{{ form.rate }}</div>
+						<div class="FormError">{{ form.rate.errors }}</div>
+						<div class="FormHelpText"></div>
+					</div>
+
+					<div class="FormBlock">
+						<div class="FormLabel OptionalLabel">{{ form.pay_comment.label }}</div>
+						<div class="FormField">{{ form.pay_comment }}</div>
+						<div class="FormError">{{ form.pay_comment.errors }}</div>
+						<div class="FormHelpText"></div>
+					</div>
+				</div>
+
+				<input class="AddRequestButton" type="submit" name="" value="Добавить заявку" />
+			</div>
+		</div>
+	</form>
+
+{% endblock %}
