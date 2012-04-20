@@ -1,0 +1,58 @@
+/****** Инструкция по установке ******/
+
+Прежде всего потребуется python=>2.6, git, postgresql >=8.4 (можно из
+пакетов(портов) поставить)
+1) Установить pip installer для удобной установки python библиотек
+http://www.pip-installer.org/en/latest/installing.html
+2) Установить django и необходимые библиотеки:
+pip install django
+pip install psycopg2 (если не хватит библиотек, то возможно еще
+придется поставить sudo apt-get install libpq-dev)
+3) Скачать проект с гитхаба https://github.com/chukreev-alexey/sails
+(далее подразумевается что проект лежит в папке ~/sails/)
+
+cd ~
+git clone git://github.com/chukreev-alexey/sails.git
+
+4) Зайти в postgres (sudo -u postgres psql postgres) и создать
+пользователя и БД.
+
+CREATE USER sails WITH PASSWORD 'F6Hked7hgkl';
+CREATE DATABASE sails OWNER sails ENCODING 'UTF-8' TEMPLATE template0;
+
+Проверим sudo -u postgres psql sails (ОК? Идем дальше)
+
+Пароль - системный, пользователем нигде юзаться не будет, если есть
+желание, то его можно изменить, но тогда придется поправить файл
+настроек проекта ~/sails/settings.py, чтобы было соответствие
+
+5) Загружаем дамп данных
+
+sudo -u postgres psql sails < '~/sails/sails20120416.dump'
+
+6) Переходим в папку cd ~/sails/ и выполняем команду (порт можно любой
+свободный указать)
+
+python manage.py runserver 127.0.0.1:8800
+
+7) В браузере наберем 127.0.0.1:8800 ну или по ip (если с другого компа)
+если работает, значит - все ок.
+
+И можно ставить по боевому. Для этого нужно выбрать один из вариантов
+https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/. Там все
+описано как что должно работать. Но если будут вопросы - я могу
+ответить.
+
+8) На боевом сервере (в апаче или nginx) надо натравить /media/ на
+папку ~/sails/media/, а папку /admin_media/ на ~/sails/admin_media/. А
+также необходимо в файле settings.py зафальсить переменную
+DEBUG=False. Необходимо также поставить send_mail со стандартными
+параметрами localhost:25 без аутентификации (иначе скажите мне
+параметры send_mail, я пропишу их в settings.py или вы сами можете это
+сделать https://docs.djangoproject.com/en/1.4/ref/settings/#email-host)
+
+Вот собственно все.
+
+Пишите, если будут вопросы или просьбы. После того как получится
+развернуть проект по-боевому, мы договоримся и я вышлю свежую БД и
+закрою старую версию программы.
